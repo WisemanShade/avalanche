@@ -5,53 +5,75 @@
   <title>Adventures in Vana’diel – Catseye</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #0b0e14;
-      color: #e6e6e6;
-      line-height: 1.6;
-    }
-    header {
-      padding: 3rem 1rem;
-      text-align: center;
-      background: linear-gradient(180deg, #141824, #0b0e14);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      border-bottom: 1px solid #222;
-    }
-    nav a {
-      color: #9ecbff;
-      text-decoration: none;
-    }
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    .log-entry {
-      border-left: 3px solid #3b82f6;
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+  :root {
+    --bg: #0b0e14;
+    --text: #e6e6e6;
+    --accent: #3b82f6;
+    --panel: #141824;
+  }
+
+  body.light {
+    --bg: #f4f4f5;
+    --text: #111827;
+    --accent: #2563eb;
+    --panel: #ffffff;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  header {
+    padding: 3rem 1rem;
+    text-align: center;
+    background: var(--panel);
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+  }
+
+  nav a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  section {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem 1rem;
+  }
+
+  .log-entry {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+</style>
 </head>
 <body>
-
+<button class="toggle" onclick="toggleTheme()">☀️ / 🌙</button>
 <header>
   <h1>Adventures in Vana’diel</h1>
   <p>My journey on the Catseye FFXI server</p>
@@ -102,6 +124,17 @@
 <footer>
   Final Fantasy XI © Square Enix — Fan site, no affiliation
 </footer>
+<script>
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("light");
+  }
 
+  function toggleTheme() {
+    document.body.classList.toggle("light");
+    const theme = document.body.classList.contains("light") ? "light" : "dark";
+    localStorage.setItem("theme", theme);
+  }
+</script>
 </body>
 </html>
