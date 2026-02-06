@@ -1,2 +1,3 @@
 # avalanche
-Catseye FFXI Journal
+Catseye FFXI Progress
+Character name Forsaken 
