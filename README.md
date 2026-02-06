@@ -1,2 +1,2 @@
 # avalanche
-catseye-journal
+Catseye FFXI Journal
