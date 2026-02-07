@@ -4,76 +4,146 @@
   <meta charset="UTF-8" />
   <title>Adventures in Vana’diel – Catseye</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-  :root {
-    --bg: #0b0e14;
-    --text: #e6e6e6;
-    --accent: #3b82f6;
-    --panel: #141824;
-  }
+    :root {
+      --bg: #0b0e14;
+      --text: #e6e6e6;
+      --accent: #3b82f6;
+      --panel: #141824;
+    }
 
-  body.light {
-    --bg: #f4f4f5;
-    --text: #111827;
-    --accent: #2563eb;
-    --panel: #ffffff;
-  }
+    body.light {
+      --bg: #f4f4f5;
+      --text: #111827;
+      --accent: #2563eb;
+      --panel: #ffffff;
+    }
 
-  body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    transition: background 0.3s, color 0.3s;
-  }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
 
-  header {
-    padding: 3rem 1rem;
-    text-align: center;
-    background: var(--panel);
-  }
+    header {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: var(--panel);
+    }
 
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1rem;
-    border-bottom: 1px solid #333;
-  }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem;
+      border-bottom: 1px solid #222;
+      flex-wrap: wrap;
+    }
 
-  nav a {
-    color: var(--accent);
-    text-decoration: none;
-  }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-  .toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 0.4rem 0.75rem;
-    cursor: pointer;
-    border-radius: 6px;
-  }
+    .toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.4rem 0.75rem;
+      cursor: pointer;
+      border-radius: 6px;
+    }
 
-  section {
-    max-width: 900px;
-    margin: auto;
-    padding: 2rem 1rem;
-  }
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
 
-  .log-entry {
-    border-left: 3px solid var(--accent);
-    padding-left: 1rem;
-    margin-bottom: 1.5rem;
-  }
-</style>
+    .log-entry {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Members */
+    .members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .member-card {
+      background: var(--panel);
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .member-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .member-card h3 a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .member-card h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .job {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0.5rem 0;
+    }
+
+    .job img {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+  </style>
 </head>
+
 <body>
 <button class="toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+
 <header>
   <h1>Adventures in Vana’diel</h1>
   <p>My journey on the Catseye FFXI server</p>
@@ -82,6 +152,7 @@
 <nav>
   <a href="#log">Adventure Log</a>
   <a href="#jobs">Jobs</a>
+  <a href="#members">Members</a>
   <a href="#moments">Moments</a>
   <a href="#about">About</a>
 </nav>
@@ -108,9 +179,48 @@
   </ul>
 </section>
 
+<section id="members">
+  <h2>🧙 Members</h2>
+
+  <div class="members">
+    <div class="member-card">
+      <h3>
+        <a href="https://catseyexi.com/char/25525" target="_blank" rel="noopener">
+          Forsaken
+        </a>
+      </h3>
+      <div class="job">
+        <img src="job/ninja.png" alt="Ninja job icon">
+        <span>NIN</span>
+      </div>
+      <p><strong>Role:</strong> Party Member</p>
+      <p><strong>Notes:</strong> Silent, precise, deadly.</p>
+    </div>
+
+    <div class="member-card">
+      <h3>
+        <a href="https://catseyexi.com/char/37296" target="_blank" rel="noopener">
+          Karisuto
+        </a>
+      </h3>
+      <div class="job">
+        <img src="job/bard.png" alt="Bard job icon">
+        <span>BRD</span>
+      </div>
+      <p><strong>Role:</strong> Party Member</p>
+      <p><strong>Notes:</strong> Songs always on time, clutch support.</p>
+    </div>
+  </div>
+</section>
+
 <section id="moments">
   <h2>📸 Notable Moments</h2>
-  <p>Screenshots and stories coming soon.</p>
+
+  <div class="gallery">
+    <img src="screenshots/bastok_day1.jpg" alt="Arrival in Bastok">
+    <img src="screenshots/dunes_party_wipe.png" alt="Valkurm Dunes wipe">
+    <img src="screenshots/level10_ding.jpg" alt="Level 10 ding">
+  </div>
 </section>
 
 <section id="about">
@@ -124,6 +234,7 @@
 <footer>
   Final Fantasy XI © Square Enix — Fan site, no affiliation
 </footer>
+
 <script>
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
@@ -135,6 +246,13 @@
     const theme = document.body.classList.contains("light") ? "light" : "dark";
     localStorage.setItem("theme", theme);
   }
+
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("click", () => {
+      window.open(img.src, "_blank");
+    });
+  });
 </script>
+
 </body>
 </html>
